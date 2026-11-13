@@ -308,7 +308,7 @@ $("mc").addEventListener("click",function(){$("login").textContent="👤 My acco
 document.addEventListener("keydown",function(e){var a=document.activeElement.tagName;if(e.key=="?"&&a!="INPUT"&&a!="TEXTAREA"){gm('<h3>Keyboard shortcuts</h3><p>Move faster with these keys.</p><pre>Ctrl / ⌘ + K   Command palette\nEsc           Close popups\n?             Show this help</pre><button class="btn" id="gx">Close</button>')}});
 
 /* ===== Real backend connection (falls back to the demo animation when the API is unreachable) ===== */
-var CFGX=window.DEVCREW_CONFIG||{},API=(CFGX.API_BASE||"http://localhost:8000").replace(/\/$/,""),running=false;
+var CFGX=window.DEVCREW_CONFIG||{},API=(CFGX.API_BASE||"https://devcrew-ai-backend-one.vercel.app").replace(/\/$/,""),running=false;
 function tkn(){try{return sessionStorage.getItem("dc_token")||""}catch(e){return ""}}
 function hdr(){var h={"Content-Type":"application/json"},t=tkn();if(t)h.Authorization="Bearer "+t;return h}
 function fence(t){var m=(t||"").match(/```(?:python|py)?\n([\s\S]*?)```/);return m?m[1].trim():(t||"")}

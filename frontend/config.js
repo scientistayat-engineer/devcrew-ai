@@ -2,7 +2,7 @@
    API_BASE : backend URL. Local: http://localhost:8000. After deploy: your backend Vercel URL.
    FIREBASE : Firebase Console > Project settings > Your apps > Web app > Config. */
 window.DEVCREW_CONFIG = {
-  API_BASE: "http://localhost:8000",
+  API_BASE: "https://devcrew-ai-backend-one.vercel.app",
   FIREBASE: {
     apiKey: "AIzaSyB7PiOXSYkK3FmOJZGrU_kZsGDd4nrCZpc",
     authDomain: "devcrew-ai-b8444.firebaseapp.com",
