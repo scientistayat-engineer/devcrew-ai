@@ -1,0 +1,7 @@
+fastapi>=0.110
+pydantic>=2.6
+python-dotenv>=1.0
+langsmith>=0.1.100
+google-auth>=2.29
+requests>=2.31
+groq>=0.11

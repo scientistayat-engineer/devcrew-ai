@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%2322d3ee'/%3E%3Ccircle cx='16' cy='16' r='6' fill='%23a855f7'/%3E%3C/svg%3E">
+<title>Sign in – DevCrew AI</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+@property --a{syntax:"<angle>";initial-value:0deg;inherits:false}
+:root{color-scheme:dark;box-sizing:border-box;--bg:#050810;--bd:#1b2a47;--fg:#e8eefb;--mu:#7f8ca6;--c1:#22d3ee;--c2:#a855f7;--c3:#34d399;--bad:#fb7185;--mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace}
+*{box-sizing:border-box;margin:0}
+body{background:var(--bg);color:var(--fg);font-family:"Space Grotesk",system-ui,sans-serif;min-height:100vh;overflow-x:hidden}
+.page{display:grid;grid-template-columns:1.1fr 1fr;min-height:100vh}
+.hero{position:relative;overflow:hidden;border-right:1px solid var(--bd);background:radial-gradient(600px 400px at 20% 10%,rgba(168,85,247,.22),transparent),radial-gradient(600px 400px at 90% 90%,rgba(34,211,238,.18),transparent),linear-gradient(rgba(34,211,238,.045) 1px,transparent 1px) 0 0/42px 42px,linear-gradient(90deg,rgba(34,211,238,.045) 1px,transparent 1px) 0 0/42px 42px}
+#cv{position:absolute;inset:0;width:100%;height:100%}
+.ov{position:relative;z-index:2;height:100%;display:flex;flex-direction:column;justify-content:space-between;padding:32px 40px;padding-top:calc(32px + env(safe-area-inset-top,0px));pointer-events:none}
+.logo{display:flex;gap:10px;align-items:center;font-weight:700;font-size:20px}.logo i{width:26px;height:26px;border-radius:8px;background:conic-gradient(var(--c1),var(--c2),var(--c1));box-shadow:0 0 18px var(--c1)}.logo b{color:var(--c1)}
+h1{font-size:clamp(28px,3.6vw,46px);line-height:1.1;letter-spacing:-.03em;margin:22px 0 10px;max-width:480px}
+.gr{background:linear-gradient(90deg,var(--c1),var(--c2),var(--c1));background-size:200%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:s 5s linear infinite}@keyframes s{to{background-position:200%}}
+.lead{color:var(--mu);max-width:430px}
+.term{background:rgba(7,12,24,.85);border:1px solid var(--bd);border-radius:14px;max-width:440px;overflow:hidden;backdrop-filter:blur(8px)}
+.term div{padding:8px 14px;border-bottom:1px solid var(--bd);font:11px var(--mono);color:var(--mu)}.term pre{padding:12px 14px;font:12px/1.75 var(--mono);color:#b6c4de;height:122px;overflow:hidden;white-space:pre-wrap}
+.side{display:grid;place-items:center;padding:28px 20px;padding-top:calc(28px + env(safe-area-inset-top,0px));padding-bottom:calc(28px + env(safe-area-inset-bottom,0px))}
+.card{position:relative;width:100%;max-width:410px;border-radius:22px;background:#0a1224;padding:30px;box-shadow:0 0 60px rgba(34,211,238,.1)}
+.card::before{content:"";position:absolute;inset:-1px;border-radius:23px;padding:1.5px;background:conic-gradient(from var(--a),var(--c1),var(--c2),transparent 45%,var(--c1));-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;animation:rot 6s linear infinite;pointer-events:none}
+@keyframes rot{to{--a:360deg}}
+.tabs{display:grid;grid-template-columns:1fr 1fr;background:#070c18;border:1px solid var(--bd);border-radius:12px;padding:4px;margin-bottom:22px}
+.tabs button{font:600 14px inherit;font-family:inherit;padding:9px;border:0;border-radius:9px;background:none;color:var(--mu);cursor:pointer;transition:.2s}
+.tabs button.on{background:linear-gradient(90deg,rgba(34,211,238,.18),rgba(168,85,247,.18));color:var(--fg)}
+h2{font-size:25px;letter-spacing:-.02em}.sub{color:var(--mu);font-size:14px;margin:4px 0 18px}
+.gbtn{width:100%;display:flex;gap:10px;justify-content:center;align-items:center;padding:12px;border-radius:12px;border:1px solid var(--bd);background:#070c18;color:var(--fg);font:600 14px inherit;font-family:inherit;cursor:pointer;transition:.2s}
+.gbtn:hover{border-color:var(--c1);box-shadow:0 0 18px rgba(34,211,238,.2)}
+.gi{font:800 15px Arial,sans-serif;background:conic-gradient(#ea4335 0 25%,#fbbc05 0 50%,#34a853 0 75%,#4285f4 0);-webkit-background-clip:text;background-clip:text;color:transparent}
+.or{display:flex;align-items:center;gap:10px;margin:18px 0;color:var(--mu);font:11px var(--mono)}.or::before,.or::after{content:"";flex:1;height:1px;background:var(--bd)}
+label{display:block;font:11px var(--mono);color:var(--mu);margin:14px 0 6px}
+.in{position:relative}.in input{width:100%;background:#070c18;color:var(--fg);border:1px solid var(--bd);border-radius:11px;padding:12px 14px;font:15px "Space Grotesk",sans-serif;transition:.2s}
+.in input:focus{outline:0;border-color:var(--c1);box-shadow:0 0 0 3px rgba(34,211,238,.15)}
+.eye{position:absolute;right:8px;top:50%;transform:translateY(-50%);background:none;border:0;color:var(--mu);cursor:pointer;font:11px var(--mono);padding:6px}
+.meter{display:flex;gap:5px;margin-top:8px}.meter i{flex:1;height:4px;border-radius:9px;background:#14203a;transition:.3s}
+.row{display:flex;justify-content:space-between;align-items:center;margin-top:12px;font-size:13px;color:var(--mu)}
+.lnk{color:var(--c1);cursor:pointer;background:none;border:0;font:inherit}.lnk:hover{text-decoration:underline}
+.btn{width:100%;margin-top:18px;padding:13px;border:0;border-radius:12px;font:700 15px inherit;font-family:inherit;color:#03121a;background:linear-gradient(90deg,var(--c1),var(--c2));cursor:pointer;box-shadow:0 0 24px rgba(34,211,238,.35);transition:transform .15s}
+.btn:hover{transform:translateY(-2px)}.btn:disabled{opacity:.7;cursor:wait;transform:none}
+.err{min-height:20px;margin-top:12px;font-size:13px;color:var(--bad)}.err.okm{color:var(--c3)}
+.demo{margin-top:16px;text-align:center;font:11px var(--mono);color:var(--mu);border:1px dashed var(--bd);border-radius:9px;padding:8px}
+.hide{display:none}
+.ok{text-align:center;padding:30px 0}.ok svg{width:84px;height:84px}.ok circle,.ok path{fill:none;stroke:var(--c3);stroke-width:3;stroke-linecap:round;stroke-dasharray:260;stroke-dashoffset:260;animation:d .9s .1s forwards}.ok path{stroke-dasharray:60;stroke-dashoffset:60;animation-delay:.6s}@keyframes d{to{stroke-dashoffset:0}}
+.ok h2{margin:14px 0 6px}
+@media(max-width:860px){.page{grid-template-columns:1fr}.hero{min-height:300px;border-right:0;border-bottom:1px solid var(--bd)}.ov{padding:22px}.term,.lead{display:none}}
+</style>
+</head>
+<body>
+<div class="page">
+<section class="hero">
+<canvas id="cv"></canvas>
+<div class="ov">
+<div><div class="logo"><i></i><span>Dev<b>Crew</b> AI</span></div>
+<h1>Meet the AI team that <span class="gr">ships your code.</span></h1>
+<p class="lead">Seven agents plan, code, test, review and document your ideas. Sign in to put them to work.</p></div>
+<div class="term"><div>● ● ●&nbsp; secure session</div><pre id="ty"></pre></div>
+</div>
+</section>
+
+<main class="side"><div class="card" id="card">
+<div id="box">
+<div class="tabs"><button class="on" id="t1">Sign in</button><button id="t2">Create account</button></div>
+<h2 id="ht">Welcome back</h2><p class="sub" id="hs">Sign in to your DevCrew workspace.</p>
+<button class="gbtn" id="gg" type="button"><span class="gi">G</span> Continue with Google</button>
+<div class="or">or with email</div>
+<form id="f" novalidate>
+<div id="nm" class="hide"><label for="name">FULL NAME</label><div class="in"><input id="name" autocomplete="name" placeholder="Your name"></div></div>
+<label for="email">EMAIL</label><div class="in"><input id="email" type="email" autocomplete="email" placeholder="you@email.com"></div>
+<label for="pw">PASSWORD</label><div class="in"><input id="pw" type="password" autocomplete="current-password" placeholder="••••••••"><button class="eye" id="eye" type="button">SHOW</button></div>
+<div class="meter hide" id="mt"><i></i><i></i><i></i><i></i></div>
+<div class="row" id="rw"><span>Protected by Firebase</span><button class="lnk" id="fp" type="button">Forgot password?</button></div>
+<div class="err" id="er" role="alert"></div>
+<button class="btn" id="go" type="submit">Sign in</button>
+</form>
+<div class="demo hide" id="dm">DEMO MODE · add your Firebase config in config.js to enable real sign-in</div>
+</div>
+<div class="ok hide" id="ok"><svg viewBox="0 0 84 84"><circle cx="42" cy="42" r="38"/><path d="M26 43l11 11 21-23"/></svg><h2>Access granted</h2><p class="sub" id="okm">Redirecting to your workspace…</p><button class="lnk" id="again">Back to sign in</button></div>
+</div></main>
+</div>
+
+<script src="config.js"></script>
+<script>
+/* ===== 1. Firebase config lives in config.js ===== */
+var CFG=(window.DEVCREW_CONFIG&&window.DEVCREW_CONFIG.FIREBASE)||{apiKey:"YOUR_API_KEY"};
+var NEXT="app.html";            /* page opened after login */
+var LIVE=CFG.apiKey.indexOf("YOUR_")!==0;
+try{if(sessionStorage.getItem("dc_token")||sessionStorage.getItem("dc_demo"))location.replace(NEXT)}catch(e){}
+var $=function(i){return document.getElementById(i)},up=false,FB=null;
+
+/* ===== Auth adapter: real Firebase when configured, demo otherwise ===== */
+function wait(){return new Promise(function(r){setTimeout(r,900)})}
+async function loadFB(){var b="https://www.gstatic.com/firebasejs/10.14.1/",a=await import(b+"firebase-app.js"),u=await import(b+"firebase-auth.js");FB={u:u,auth:u.getAuth(a.initializeApp(CFG))}}
+async function tok(u){try{sessionStorage.setItem("dc_token",await u.getIdToken())}catch(e){}}
+var API={
+ async signIn(e,p){if(!LIVE)return wait();if(!FB)await loadFB();var c=await FB.u.signInWithEmailAndPassword(FB.auth,e,p);await tok(c.user)},
+ async signUp(n,e,p){if(!LIVE)return wait();if(!FB)await loadFB();var c=await FB.u.createUserWithEmailAndPassword(FB.auth,e,p);await FB.u.updateProfile(c.user,{displayName:n});await tok(c.user)},
+ async google(){if(!LIVE)return wait();if(!FB)await loadFB();var c=await FB.u.signInWithPopup(FB.auth,new FB.u.GoogleAuthProvider());await tok(c.user)},
+ async reset(e){if(!LIVE)return wait();if(!FB)await loadFB();await FB.u.sendPasswordResetEmail(FB.auth,e)}
+};
+var EM={"auth/invalid-credential":"Wrong email or password.","auth/user-not-found":"No account found for this email.","auth/wrong-password":"Wrong email or password.","auth/email-already-in-use":"This email already has an account. Try signing in.","auth/weak-password":"Choose a stronger password.","auth/popup-closed-by-user":"Google sign-in was cancelled.","auth/too-many-requests":"Too many attempts. Try again in a few minutes.","auth/network-request-failed":"Network error. Check your connection."};
+function msg(x){return EM[x&&x.code]||"Something went wrong. Please try again."}
+
+/* ===== UI ===== */
+function err(t,ok){$("er").textContent=t||"";$("er").className="err"+(ok?" okm":"")}
+function busy(b,t){$("go").disabled=b;$("gg").disabled=b;$("go").textContent=b?"Please wait…":(up?"Create account":"Sign in")}
+function mode(u){up=u;err("");$("t1").classList.toggle("on",!u);$("t2").classList.toggle("on",u);$("ht").textContent=u?"Create your account":"Welcome back";$("hs").textContent=u?"Join DevCrew AI and meet your agents.":"Sign in to your DevCrew workspace.";$("nm").classList.toggle("hide",!u);$("mt").classList.toggle("hide",!u);$("fp").classList.toggle("hide",u);$("pw").autocomplete=u?"new-password":"current-password";$("go").textContent=u?"Create account":"Sign in"}
+$("t1").onclick=function(){mode(false)};$("t2").onclick=function(){mode(true)};
+$("eye").onclick=function(){var s=$("pw").type=="password";$("pw").type=s?"text":"password";this.textContent=s?"HIDE":"SHOW"};
+$("pw").oninput=function(){var v=this.value,s=0;if(v.length>=8)s++;if(/[A-Z]/.test(v)&&/[a-z]/.test(v))s++;if(/\d/.test(v))s++;if(/[^A-Za-z0-9]/.test(v))s++;var c=["#fb7185","#fbbf24","#22d3ee","#34d399"][Math.max(s-1,0)];[].forEach.call($("mt").children,function(b,i){b.style.background=i<s?c:"#14203a"})};
+function done(){$("box").classList.add("hide");$("ok").classList.remove("hide");$("okm").textContent="Redirecting to your workspace…";try{if(!LIVE)sessionStorage.setItem("dc_demo","1")}catch(e){}setTimeout(function(){location.href=NEXT},1400)}
+$("again").onclick=function(){$("ok").classList.add("hide");$("box").classList.remove("hide");busy(false)};
+$("f").onsubmit=async function(e){e.preventDefault();var em=$("email").value.trim(),pw=$("pw").value,nm=$("name").value.trim();
+if(up&&!nm)return err("Please enter your name.");
+if(!/^\S+@\S+\.\S+$/.test(em))return err("Enter a valid email address.");
+if(pw.length<6)return err("Password must be at least 6 characters.");
+err("");busy(true);try{up?await API.signUp(nm,em,pw):await API.signIn(em,pw);done()}catch(x){err(msg(x))}busy(false)};
+$("gg").onclick=async function(){err("");busy(true);try{await API.google();done()}catch(x){err(msg(x))}busy(false)};
+$("fp").onclick=async function(){var em=$("email").value.trim();if(!/^\S+@\S+\.\S+$/.test(em))return err("Type your email above first.");try{await API.reset(em);err("Reset link sent. Check your inbox.",true)}catch(x){err(msg(x))}};
+if(!LIVE)$("dm").classList.remove("hide");
+
+/* ===== Animated agent network ===== */
+var cv=$("cv"),cx=cv.getContext("2d"),W,H,mx=0,my=0,t=0,N=["Analyst","Planner","Coder","Tester","Reviewer","Security","Reporter"],dp=Math.min(window.devicePixelRatio||1,2);
+function rs(){var r=cv.parentElement.getBoundingClientRect();W=r.width;H=r.height;cv.width=W*dp;cv.height=H*dp;cx.setTransform(dp,0,0,dp,0,0)}
+function dr(){t+=.004;cx.clearRect(0,0,W,H);var X=W/2+mx*16,Y=H*.52+my*16,R=Math.min(W,H)*.27;
+cx.strokeStyle="rgba(34,211,238,.13)";[1,1.55].forEach(function(k){cx.beginPath();cx.ellipse(X,Y,R*k,R*k*.6,0,0,7);cx.stroke()});
+var P=N.map(function(n,i){var a=t+i*6.2832/7,k=i%2?1.55:1;return{x:X+Math.cos(a)*R*k,y:Y+Math.sin(a)*R*k*.6,n:n}});
+P.forEach(function(p,i){var q=P[(i+1)%7];cx.strokeStyle="rgba(168,85,247,.28)";cx.beginPath();cx.moveTo(p.x,p.y);cx.lineTo(q.x,q.y);cx.stroke();
+cx.strokeStyle="rgba(34,211,238,.16)";cx.beginPath();cx.moveTo(X,Y);cx.lineTo(p.x,p.y);cx.stroke();
+var f=(t*5+i*.37)%1;cx.fillStyle="#22d3ee";cx.beginPath();cx.arc(p.x+(q.x-p.x)*f,p.y+(q.y-p.y)*f,2.2,0,7);cx.fill()});
+var g=cx.createRadialGradient(X,Y,0,X,Y,R*.55);g.addColorStop(0,"rgba(34,211,238,.55)");g.addColorStop(1,"transparent");cx.fillStyle=g;cx.beginPath();cx.arc(X,Y,R*.55,0,7);cx.fill();
+cx.fillStyle="#e8eefb";cx.font="700 13px Space Grotesk,sans-serif";cx.textAlign="center";cx.fillText("DEVCREW",X,Y+4);
+P.forEach(function(p){cx.fillStyle="#0b1428";cx.strokeStyle="#22d3ee";cx.lineWidth=1.5;cx.shadowColor="#22d3ee";cx.shadowBlur=14;cx.beginPath();cx.arc(p.x,p.y,7,0,7);cx.fill();cx.stroke();cx.shadowBlur=0;cx.fillStyle="#9fb0cc";cx.font="11px JetBrains Mono,monospace";cx.fillText(p.n,p.x,p.y-14)});
+requestAnimationFrame(dr)}
+window.addEventListener("resize",rs);window.addEventListener("mousemove",function(e){mx=e.clientX/innerWidth-.5;my=e.clientY/innerHeight-.5});rs();dr();
+
+/* ===== Terminal typing ===== */
+var L=["$ devcrew auth --verify","→ checking credentials … ✔","→ issuing secure token … ✔","→ loading 7 agents … ✔","→ LangSmith tracing ready ✔","✓ workspace ready"],li=0,ci=0,tx="";
+(function ty(){if(li>=L.length){setTimeout(function(){li=0;tx="";ty()},3200);return}
+if(ci<L[li].length){$("ty").textContent=tx+L[li].slice(0,++ci);setTimeout(ty,24)}else{tx+=L[li]+"\n";li++;ci=0;setTimeout(ty,280)}})();
+</script>
+</body>
+</html>

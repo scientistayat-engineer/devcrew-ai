@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<script>(function(){try{if(!sessionStorage.getItem("dc_token")&&!sessionStorage.getItem("dc_demo")){location.replace("index.html")}}catch(e){location.replace("index.html")}})()</script>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%2322d3ee'/%3E%3Ccircle cx='16' cy='16' r='6' fill='%23a855f7'/%3E%3C/svg%3E">
+<title>DevCrew AI – Multi-Agent Software Team</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+:root{color-scheme:dark;box-sizing:border-box;--bg:#050810;--card:rgba(14,22,40,.72);--bd:#1b2a47;--fg:#e8eefb;--mu:#7f8ca6;--c1:#22d3ee;--c2:#a855f7;--c3:#34d399;--mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box;margin:0}
+body{background:var(--bg);color:var(--fg);font-family:"Space Grotesk",system-ui,sans-serif;line-height:1.55;min-height:100vh;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0;z-index:-2;background:radial-gradient(700px 420px at 85% -5%,rgba(168,85,247,.28),transparent),radial-gradient(700px 420px at 5% 5%,rgba(34,211,238,.2),transparent),linear-gradient(rgba(34,211,238,.05) 1px,transparent 1px) 0 0/44px 44px,linear-gradient(90deg,rgba(34,211,238,.05) 1px,transparent 1px) 0 0/44px 44px;mask-image:linear-gradient(#000 40%,transparent)}
+.w{max-width:1120px;margin:0 auto;padding:0 20px}
+header{position:sticky;top:0;z-index:30;background:rgba(5,8,16,.75);backdrop-filter:blur(14px);border-bottom:1px solid var(--bd);padding-top:env(safe-area-inset-top,0px)}
+header .w{display:flex;align-items:center;justify-content:space-between;height:62px}
+.logo{font-weight:700;font-size:19px;display:flex;gap:9px;align-items:center;cursor:pointer}
+.logo i{width:24px;height:24px;border-radius:7px;background:conic-gradient(var(--c1),var(--c2),var(--c1));box-shadow:0 0 16px var(--c1)}
+.logo b{color:var(--c1)}
+nav{display:flex;gap:4px}
+nav a{padding:7px 14px;border-radius:9px;color:var(--mu);font-size:14px;cursor:pointer}
+nav a.on,nav a:hover{color:var(--fg);background:rgba(34,211,238,.1)}
+.btn{font:inherit;font-weight:700;border:0;cursor:pointer;padding:11px 22px;border-radius:11px;color:#03121a;background:linear-gradient(90deg,var(--c1),var(--c2));box-shadow:0 0 22px rgba(34,211,238,.35);transition:transform .15s}
+.btn:hover{transform:translateY(-2px)}
+.btn.g{background:transparent;color:var(--fg);border:1px solid var(--bd);box-shadow:none}
+.btn.s{padding:7px 14px;font-size:13px}
+.view{display:none;padding-bottom:40px}.view.on{display:block;animation:in .4s}
+@keyframes in{from{opacity:0;transform:translateY(10px)}}
+.hero{text-align:center;padding:70px 0 20px}
+.tag{display:inline-flex;gap:8px;align-items:center;font:12px var(--mono);color:var(--c1);border:1px solid var(--bd);border-radius:99px;padding:6px 14px;background:var(--card)}
+.tag::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--c3);box-shadow:0 0 10px var(--c3);animation:p 1.6s infinite}
+@keyframes p{50%{opacity:.3}}
+h1{font-size:clamp(34px,6.5vw,68px);line-height:1.05;letter-spacing:-.035em;margin:22px auto 16px;max-width:860px}
+.gr{background:linear-gradient(90deg,var(--c1),var(--c2),var(--c1));background-size:200%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:s 5s linear infinite}
+@keyframes s{to{background-position:200%}}
+.lead{color:var(--mu);max-width:620px;margin:0 auto 28px;font-size:17px}
+.cta{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.term{max-width:700px;margin:44px auto 0;text-align:left;background:#070c18;border:1px solid var(--bd);border-radius:14px;box-shadow:0 0 40px rgba(168,85,247,.15);overflow:hidden}
+.term div:first-child{padding:10px 14px;border-bottom:1px solid var(--bd);font:12px var(--mono);color:var(--mu)}
+.term pre{padding:16px;font:13px/1.8 var(--mono);color:#b6c4de;white-space:pre-wrap;min-height:150px}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;margin:48px 0 0}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:16px;padding:20px;backdrop-filter:blur(12px);transition:border-color .25s,box-shadow .25s,transform .25s}
+.card:hover{border-color:var(--c1);box-shadow:0 0 26px rgba(34,211,238,.15);transform:translateY(-3px)}
+.stats b{font-size:30px;display:block;color:var(--c1)}.stats span{color:var(--mu);font-size:13px}
+h2{font-size:30px;letter-spacing:-.025em;margin:60px 0 6px}
+.sub{color:var(--mu);margin-bottom:22px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
+.ic{font-size:22px;width:44px;height:44px;border-radius:12px;display:grid;place-items:center;background:linear-gradient(135deg,rgba(34,211,238,.2),rgba(168,85,247,.2));margin-bottom:12px}
+.card h3{font-size:16px;margin-bottom:4px}.card p{font-size:13.5px;color:var(--mu)}
+.card small{font:11px var(--mono);color:var(--c2)}
+.ws{display:grid;grid-template-columns:340px 1fr;gap:16px;margin-top:26px}
+@media(max-width:860px){.ws{grid-template-columns:1fr}nav a{padding:7px 9px}.hide{display:none}}
+label{font:12px var(--mono);color:var(--mu);display:block;margin:12px 0 5px}
+textarea,select,input{width:100%;background:#070c18;color:var(--fg);border:1px solid var(--bd);border-radius:10px;padding:11px;font:14px "Space Grotesk",sans-serif}
+textarea{min-height:140px;resize:vertical}
+textarea:focus,select:focus,input:focus{outline:0;border-color:var(--c1);box-shadow:0 0 0 3px rgba(34,211,238,.15)}
+.pipe{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
+.node{font:12px var(--mono);padding:7px 11px;border-radius:9px;border:1px solid var(--bd);color:var(--mu)}
+.node.act{color:var(--c1);border-color:var(--c1);box-shadow:0 0 14px rgba(34,211,238,.4)}
+.node.ok{color:var(--c3);border-color:var(--c3)}
+.tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px}
+.tabs button{font:13px var(--mono);padding:6px 12px;border-radius:9px;border:1px solid var(--bd);background:none;color:var(--mu);cursor:pointer}
+.tabs button.on{color:var(--c1);border-color:var(--c1)}
+pre.o{background:#070c18;border:1px solid var(--bd);border-radius:12px;padding:15px;font:12.5px/1.7 var(--mono);min-height:230px;overflow:auto;color:#c4d2ea;white-space:pre}
+.bar{height:5px;background:#0b1428;border-radius:9px;overflow:hidden;margin:12px 0}.bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--c1),var(--c2));transition:width .6s}
+.tw{overflow-x:auto}table{width:100%;border-collapse:collapse;font-size:14px;min-width:560px}
+th{text-align:left;font:12px var(--mono);color:var(--mu);padding:10px;border-bottom:1px solid var(--bd)}
+td{padding:12px 10px;border-bottom:1px solid #111c33}
+.ok{color:var(--c3)}.bad{color:#fb7185}
+.mono{font-family:var(--mono);font-size:12.5px}
+.modal{position:fixed;inset:0;z-index:50;background:rgba(0,0,0,.65);backdrop-filter:blur(6px);display:none;place-items:center;padding:20px}.modal.on{display:grid}
+.modal .card{width:100%;max-width:380px;background:#0a1224}.modal .btn{width:100%;margin-top:16px}
+footer{border-top:1px solid var(--bd);text-align:center;color:var(--mu);font-size:13px;padding:26px 0}
+#cg{position:fixed;width:480px;height:480px;border-radius:50%;pointer-events:none;z-index:-1;background:radial-gradient(circle,rgba(34,211,238,.14),transparent 65%);transform:translate(-50%,-50%);left:50%;top:30%}
+.rv{opacity:0;transform:translateY(24px);transition:opacity .7s,transform .7s,border-color .25s,box-shadow .25s}.rv.vis{opacity:1;transform:none}.card.rv.vis:hover{transform:translateY(-3px)}
+.mq{overflow:hidden;margin:54px 0 0;border-block:1px solid var(--bd);padding:16px 0;mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent)}
+.mq div{display:flex;gap:46px;width:max-content;animation:mq 26s linear infinite;font:600 15px var(--mono);color:var(--mu)}
+.mq span::before{content:"◆ ";color:var(--c2)}@keyframes mq{to{transform:translateX(-50%)}}
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px}
+.step b{display:grid;place-items:center;width:42px;height:42px;border-radius:50%;font:700 16px var(--mono);color:#03121a;background:linear-gradient(135deg,var(--c1),var(--c2));box-shadow:0 0 20px rgba(34,211,238,.45);margin-bottom:14px}
+.faq details{background:var(--card);border:1px solid var(--bd);border-radius:14px;padding:16px 18px;margin-bottom:10px;cursor:pointer}
+.faq details[open]{border-color:var(--c1)}.faq summary{font-weight:600;list-style:none}.faq summary::after{content:"+";float:right;color:var(--c1);font-size:20px;line-height:1}.faq details[open] summary::after{content:"–"}.faq p{margin-top:10px;color:var(--mu);font-size:14px}
+.banner{margin:60px 0 10px;text-align:center;padding:48px 20px;border-radius:22px;border:1px solid var(--bd);background:radial-gradient(500px 220px at 50% 0%,rgba(168,85,247,.3),transparent),radial-gradient(500px 220px at 50% 100%,rgba(34,211,238,.25),transparent),var(--card)}
+.banner h2{margin:0 0 8px}.banner p{color:var(--mu);margin-bottom:22px}
+.log{margin-top:12px;background:#04070d;border:1px solid var(--bd);border-radius:12px;padding:12px;font:12px/1.7 var(--mono);color:#6ee7b7;height:130px;overflow:auto}.log div::before{content:"› ";color:var(--c2)}
+.hb{display:flex;gap:8px}nav{overflow-x:auto}
+.d2{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:14px}@media(max-width:860px){.d2,.hb{grid-template-columns:1fr}.hb{display:none}}
+.kpi span{font:12px var(--mono);color:var(--mu)}.kpi b{display:block;font-size:32px;margin:4px 0}.kpi em{font-style:normal;font-size:12.5px}
+.chip{font:12px var(--mono);padding:6px 11px;margin:0 6px 6px 0;border-radius:99px;border:1px solid var(--bd);background:none;color:var(--c1);cursor:pointer}.chip:hover{background:rgba(34,211,238,.12)}
+.pr{display:flex;align-items:center;gap:10px;margin:14px 0;font-size:13.5px}.pr span{width:130px;color:var(--mu)}.pr .bar{flex:1;margin:0}.pr .bar i{width:var(--v)}.pr em{font:12px var(--mono);font-style:normal;width:38px;text-align:right}
+.tgl{display:flex;gap:10px;align-items:center;font:14px "Space Grotesk",sans-serif;color:var(--fg);margin:16px 0}.tgl input{width:auto;accent-color:#22d3ee}
+.pi{padding:11px 12px;border-radius:9px;cursor:pointer;color:var(--mu);font-size:14px}.pi:hover,.pi.f{background:rgba(34,211,238,.12);color:var(--fg)}
+#toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translate(-50%,30px);background:#0a1224;border:1px solid var(--c1);color:var(--fg);padding:11px 20px;border-radius:12px;font-size:14px;opacity:0;pointer-events:none;transition:.3s;z-index:60;box-shadow:0 0 24px rgba(34,211,238,.3)}#toast.on{opacity:1;transform:translate(-50%,0)}
+#sp{position:fixed;top:0;left:0;height:3px;width:0;z-index:70;background:linear-gradient(90deg,var(--c1),var(--c2));box-shadow:0 0 10px var(--c1)}
+.sum{display:none;grid-template-columns:repeat(auto-fit,minmax(105px,1fr));gap:10px;margin-top:12px}.sum.on{display:grid;animation:in .4s}.sum div{background:#070c18;border:1px solid var(--bd);border-radius:12px;padding:10px 12px}.sum b{display:block;font-size:20px;color:var(--c3)}.sum span{font:11px var(--mono);color:var(--mu)}
+.sw{display:flex;gap:10px;margin:8px 0 18px}.sw button{width:30px;height:30px;border-radius:50%;border:2px solid transparent;cursor:pointer}.sw button.on{border-color:#fff}
+.q p{font-size:14.5px;color:var(--fg)}.q small{display:block;margin-top:12px;color:var(--mu)}
+.cols{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:24px;text-align:left;padding-bottom:26px}.cols h4{font-size:13px;color:var(--fg);margin-bottom:10px}.cols a{display:block;color:var(--mu);font-size:13px;margin:6px 0;cursor:pointer}.cols a:hover{color:var(--c1)}@media(max-width:700px){.cols{grid-template-columns:1fr 1fr}}
+tr.tr{cursor:pointer}tr.tr:hover td{background:rgba(34,211,238,.06)}
+#gb h3{font-size:20px;margin-bottom:6px}#gb pre{margin-top:12px;font:12px/1.7 var(--mono);color:#c4d2ea;white-space:pre-wrap;background:#070c18;border:1px solid var(--bd);border-radius:10px;padding:12px}#gb .btn{width:100%;margin-top:16px}
+.fl{stroke:var(--c1);stroke-width:2;stroke-dasharray:6 6;animation:dash 1s linear infinite;fill:none;filter:drop-shadow(0 0 4px var(--c1))}@keyframes dash{to{stroke-dashoffset:-12}}
+.nd{fill:#0b1428;stroke:#1b2a47;stroke-width:1.5}g.n:hover .nd{stroke:var(--c1)}.nt{fill:#e8eefb;font:600 13px "Space Grotesk",sans-serif}.ns{fill:#7f8ca6;font:10.5px monospace}
+.dg{overflow-x:auto;padding:10px}.dg svg{min-width:760px;width:100%}
+.tree{font:12.5px/1.75 var(--mono);color:#c4d2ea;white-space:pre;overflow-x:auto}
+pre.o{counter-reset:l}.ln{display:block;counter-increment:l;padding-left:38px;position:relative;min-height:1.7em}.ln::before{content:counter(l);position:absolute;left:0;width:26px;text-align:right;color:#3d4a66}.dp{background:rgba(52,211,153,.12);color:#7ee8a0}.dm{background:rgba(251,113,133,.12);color:#fb7185}.kw{color:#c084fc;font-weight:400}.st{color:#fbbf24;font-weight:400}
+.price{position:relative}.price h3{font-size:18px}.price .pv{font-size:34px;font-weight:700;margin:8px 0}.price .pv small{font-size:14px;color:var(--mu);font-weight:400}.price p{margin:7px 0}.price p::before{content:"✓ ";color:var(--c3)}.price .btn{width:100%;margin-top:14px}.price.hot{border-color:var(--c1);box-shadow:0 0 30px rgba(34,211,238,.18)}.price.hot::after{content:"MOST POPULAR";position:absolute;top:-11px;left:50%;transform:translateX(-50%);font:700 10px var(--mono);background:linear-gradient(90deg,var(--c1),var(--c2));color:#03121a;padding:3px 10px;border-radius:99px}
+#nf{position:fixed;top:calc(66px + env(safe-area-inset-top,0px));right:20px;width:310px;z-index:40;display:none;padding:8px 14px}#nf.on{display:block;animation:in .25s}#nf div{padding:11px 0;border-bottom:1px solid #111c33;font-size:13px;color:var(--mu)}#nf div:last-child{border:0}#nf b{color:var(--fg);display:block}
+.logo,.logo span,.btn,nav a{white-space:nowrap}
+nav{flex:1;min-width:0;margin:0 14px;scrollbar-width:none}nav::-webkit-scrollbar{display:none}header .w{gap:8px}
+.log div{white-space:pre-wrap;word-break:break-word}
+.ws>.card{min-width:0}pre.o{max-width:100%}
+pre.o{max-height:460px;overflow:auto}
+</style>
+</head>
+<body>
+<div id="cg"></div><div id="sp"></div>
+<header><div class="w">
+<div class="logo" data-go="home"><i></i><span>Dev<b>Crew</b> AI</span></div>
+<nav><a data-go="home">Home</a><a data-go="workspace">Workspace</a><a data-go="history">History</a><a data-go="traces">Traces</a><a data-go="dashboard">Dashboard</a><a data-go="settings">Settings</a><a data-go="architecture">Architecture</a></nav>
+<div class="hb"><button class="btn s g" id="bl">🔔</button><button class="btn s g" id="sk">Search ⌘K</button><button class="btn s" id="login">Sign out</button></div>
+</div></header>
+
+<main class="w">
+<section class="view" id="home">
+<div class="hero">
+<span class="tag">CrewAI · Groq · LangSmith · Live tracing</span>
+<h1>Ship code with an <span class="gr">autonomous AI dev team.</span></h1>
+<p class="lead">Describe what you need. Seven specialist agents plan, code, test, review, secure and document it, and every step is traced.</p>
+<div class="cta"><button class="btn" data-go="workspace">Launch workspace →</button><button class="btn g" data-go="traces">View live traces</button></div>
+<div class="term"><div>● ● ●&nbsp; devcrew — pipeline</div><pre id="ty"></pre></div>
+</div>
+<div class="stats">
+<div class="card"><b>7</b><span>Specialist agents</span></div>
+<div class="card"><b>~40s</b><span>Avg. pipeline time</span></div>
+<div class="card"><b>100%</b><span>Runs traced in LangSmith</span></div>
+<div class="card"><b>.py + PDF</b><span>One-click export</span></div>
+</div>
+<h2>Meet the crew</h2><p class="sub">Each agent hands its work to the next, just like a real team.</p>
+<div class="grid" id="agents"></div>
+<h2>Built like a real product</h2><p class="sub">Everything you expect from a modern dev platform.</p>
+<div class="grid" id="feats"></div>
+<div class="mq"><div><span>CrewAI</span><span>Groq</span><span>LangSmith</span><span>FastAPI</span><span>Python</span><span>pytest</span><span>Firebase</span><span>Vercel</span><span>CrewAI</span><span>Groq</span><span>LangSmith</span><span>FastAPI</span><span>Python</span><span>pytest</span><span>Firebase</span><span>Vercel</span></div></div>
+<h2>How it works</h2><p class="sub">From idea to reviewed code in three steps.</p>
+<div class="steps"><div class="card step"><b>1</b><h3>Describe</h3><p>Type your software requirement in plain language.</p></div><div class="card step"><b>2</b><h3>Agents collaborate</h3><p>Seven agents plan, code, test, review and secure it.</p></div><div class="card step"><b>3</b><h3>Download</h3><p>Get final code, tests and a full development report.</p></div></div>
+<h2>Questions</h2><p class="sub">Quick answers about the platform.</p>
+<div class="faq"><details><summary>Which AI model powers the agents?</summary><p>Agents run on Groq-hosted open models through CrewAI, so responses are fast.</p></details><details><summary>How are runs monitored?</summary><p>Every agent call is traced in LangSmith with latency, tokens and errors.</p></details><details><summary>What do I get at the end?</summary><p>Final Python code, test cases, a review summary and a development report.</p></details><details><summary>Can I choose the model?</summary><p>Yes. Pick the model and temperature in the Workspace settings.</p></details></div>
+<h2>Simple pricing</h2><p class="sub">Demo pricing for the preview.</p>
+<div class="grid"><div class="card price"><h3>Free</h3><div class="pv">$0<small> / month</small></div><p>10 runs per month</p><p>All 7 agents</p><p>Basic history</p><button class="btn g" data-go="workspace">Start free</button></div><div class="card price hot"><h3>Pro</h3><div class="pv">$12<small> / month</small></div><p>Unlimited runs</p><p>LangSmith trace links</p><p>Export code and reports</p><button class="btn" data-go="workspace">Go Pro</button></div><div class="card price"><h3>Team</h3><div class="pv">$39<small> / month</small></div><p>Shared workspace</p><p>Custom agents</p><p>Priority support</p><button class="btn g" data-go="workspace">Contact us</button></div></div>
+<h2>What developers say</h2><p class="sub">Sample feedback shown for demo purposes.</p>
+<div class="grid"><div class="card q"><p>“It feels like having a junior team that never sleeps. The review step caught bugs I would have missed.”</p><small>Sara K. · Backend developer</small></div><div class="card q"><p>“The LangSmith traces make debugging agent behaviour effortless. Everything is visible.”</p><small>Ali R. · ML engineer</small></div><div class="card q"><p>“From requirement to tested code in under a minute. Perfect for prototyping.”</p><small>Hira M. · Student developer</small></div></div>
+<div class="banner"><h2>Ready to build your first project?</h2><p>Give your AI dev team a requirement and watch it ship.</p><button class="btn" data-go="workspace">Launch workspace →</button></div>
+</section>
+
+<section class="view" id="workspace">
+<h2 style="margin-top:34px">Workspace</h2><p class="sub">Submit a requirement and watch the crew work.</p>
+<div class="ws">
+<div class="card">
+<label>QUICK TEMPLATES</label><div id="chips"></div>
+<label>REQUIREMENT</label>
+<textarea id="req">Build a CLI to-do manager with add, list, complete and delete commands, saving tasks to a JSON file.</textarea>
+<label>MODEL</label><select id="mdl"><option>openai/gpt-oss-120b</option><option>openai/gpt-oss-20b</option></select>
+<label>TEMPERATURE · <span id="tv">0.3</span></label><input type="range" min="0" max="1" step=".1" value=".3" id="tmp">
+<button class="btn" id="run" style="width:100%;margin-top:18px">Run agents ▶</button>
+</div>
+<div class="card">
+<div class="pipe" id="pipe"></div>
+<div class="bar"><i id="bar"></i></div>
+<div class="tabs" id="tabs"></div>
+<pre class="o" id="out"></pre>
+<div class="log" id="log"><div>idle · waiting for a requirement</div></div>
+<div class="sum" id="sum"><div><b id="s1">0</b><span>TESTS WRITTEN</span></div><div><b id="s2">0</b><span>REVIEW POINTS</span></div><div><b id="s3">0</b><span>SECURITY POINTS</span></div><div><b id="tm">0s</b><span>TOTAL TIME</span></div><div><b id="s5">0</b><span>CODE LINES</span></div></div>
+<div style="display:flex;gap:8px;margin-top:12px"><button class="btn s g" id="cp">Copy code</button><button class="btn s g">Download .py</button><button class="btn s g">Export report</button></div>
+</div></div>
+</section>
+
+<section class="view" id="history">
+<h2 style="margin-top:34px">Project history</h2><p class="sub">Every requirement you have submitted.</p>
+<input id="hq" placeholder="Search projects…" style="max-width:340px;margin-bottom:14px">
+<div class="card tw"><table id="ht"><tr><th>REQUIREMENT</th><th>AGENTS</th><th>TESTS</th><th>STATUS</th><th>WHEN</th></tr></table></div>
+</section>
+
+<section class="view" id="traces">
+<h2 style="margin-top:34px">LangSmith traces</h2><p class="sub">Latency, tokens and status for every agent call.</p>
+<div class="card tw"><table id="tt"><tr><th>RUN</th><th>AGENT</th><th>LATENCY</th><th>TOKENS</th><th>STATUS</th></tr></table></div>
+</section>
+<section class="view" id="dashboard"><h2 style="margin-top:34px">Dashboard</h2><p class="sub">Your crew at a glance.</p>
+<div class="grid"><div class="card kpi"><span>TOTAL RUNS</span><b>128</b><em class="ok">▲ 18% this week</em></div><div class="card kpi"><span>TESTS PASSED</span><b>94%</b><em class="ok">▲ 3% vs last week</em></div><div class="card kpi"><span>AVG. TIME</span><b>38s</b><em class="ok">▼ 6s faster</em></div><div class="card kpi"><span>TOKENS USED</span><b>412k</b><em style="color:var(--mu)">this month</em></div></div>
+<div class="d2"><div class="card"><h3>Runs this week</h3><div id="chart"></div></div><div class="card"><h3>Agent success rate</h3><div id="perf"></div></div></div></section>
+<section class="view" id="settings"><h2 style="margin-top:34px">Settings</h2><p class="sub">Connect your keys and tune the crew.</p>
+<div class="d2"><div class="card"><h3>Integrations</h3><label>GROQ API KEY</label><input type="password" placeholder="gsk_••••••••"><label>LANGSMITH API KEY</label><input type="password" placeholder="lsv2_••••••••"><label>LANGSMITH PROJECT</label><input value="devcrew-ai"><p style="margin-top:12px">In the real app, keys are read from the backend .env file, never stored in the browser.</p></div>
+<div class="card"><h3>Pipeline</h3><label class="tgl"><input type="checkbox" checked> Enable LangSmith tracing</label><label class="tgl"><input type="checkbox" checked> Run Security Auditor</label><label class="tgl"><input type="checkbox" checked> Auto-fix issues found by Reviewer</label><label class="tgl"><input type="checkbox"> Generate PDF report</label><label>ACCENT COLOR</label><div class="sw" id="sw"></div><button class="btn" id="sv">Save settings</button></div></div></section>
+<section class="view" id="architecture"><h2 style="margin-top:34px">System architecture</h2><p class="sub">How a requirement flows through the crew.</p>
+<div class="card dg"><svg viewBox="0 0 870 390" xmlns="http://www.w3.org/2000/svg">
+<path class="fl" d="M190 58H240M410 58H460M630 58H680M765 86V170M680 198H630M460 198H410M240 198H190M105 226V300"/>
+<g class="n"><rect class="nd" x="20" y="30" width="170" height="56" rx="12"/><text class="nt" x="105" y="54" text-anchor="middle">User requirement</text><text class="ns" x="105" y="72" text-anchor="middle">frontend form</text></g>
+<g class="n"><rect class="nd" x="240" y="30" width="170" height="56" rx="12"/><text class="nt" x="325" y="54" text-anchor="middle">1 Analyst</text><text class="ns" x="325" y="72" text-anchor="middle">specs and edge cases</text></g>
+<g class="n"><rect class="nd" x="460" y="30" width="170" height="56" rx="12"/><text class="nt" x="545" y="54" text-anchor="middle">2 Planner</text><text class="ns" x="545" y="72" text-anchor="middle">implementation plan</text></g>
+<g class="n"><rect class="nd" x="680" y="30" width="170" height="56" rx="12"/><text class="nt" x="765" y="54" text-anchor="middle">3 Coder</text><text class="ns" x="765" y="72" text-anchor="middle">Python code</text></g>
+<g class="n"><rect class="nd" x="680" y="170" width="170" height="56" rx="12"/><text class="nt" x="765" y="194" text-anchor="middle">4 Tester</text><text class="ns" x="765" y="212" text-anchor="middle">pytest cases</text></g>
+<g class="n"><rect class="nd" x="460" y="170" width="170" height="56" rx="12"/><text class="nt" x="545" y="194" text-anchor="middle">5 Reviewer</text><text class="ns" x="545" y="212" text-anchor="middle">bugs and quality</text></g>
+<g class="n"><rect class="nd" x="240" y="170" width="170" height="56" rx="12"/><text class="nt" x="325" y="194" text-anchor="middle">6 Security Auditor</text><text class="ns" x="325" y="212" text-anchor="middle">vulnerability scan</text></g>
+<g class="n"><rect class="nd" x="20" y="170" width="170" height="56" rx="12"/><text class="nt" x="105" y="194" text-anchor="middle">7 Reporter</text><text class="ns" x="105" y="212" text-anchor="middle">final code and report</text></g>
+<g class="n"><rect class="nd" x="20" y="300" width="170" height="56" rx="12" style="stroke:#34d399"/><text class="nt" x="105" y="324" text-anchor="middle" style="fill:#34d399">Final output</text><text class="ns" x="105" y="342" text-anchor="middle">code, tests, report</text></g>
+<rect x="240" y="300" width="610" height="56" rx="12" fill="none" stroke="#a855f7" stroke-dasharray="4 4"/><text class="nt" x="545" y="324" text-anchor="middle">Platform layer</text><text class="ns" x="545" y="342" text-anchor="middle">Groq LLM · LangSmith tracing · FastAPI · Firebase · Vercel</text>
+</svg></div>
+<div class="d2"><div class="card"><h3>Proposed folder structure</h3><div class="tree">devcrew-ai/
+├── backend/
+│   ├── app/
+│   │   ├── main.py
+│   │   ├── config.py
+│   │   ├── crew.py
+│   │   ├── tasks.py
+│   │   ├── schemas.py
+│   │   ├── agents/   (7 agent files)
+│   │   ├── api/routes.py
+│   │   └── observability/langsmith.py
+│   ├── tests/
+│   ├── requirements.txt
+│   └── .env.example
+├── frontend/
+│   ├── index.html
+│   ├── css/  js/  assets/
+├── docs/   (report, diagrams)
+├── firebase.json
+├── vercel.json
+└── README.md</div></div>
+<div class="card"><h3>Tech stack</h3><div class="pr"><span>CrewAI</span><p>Multi-agent orchestration</p></div><div class="pr"><span>Groq</span><p>Fast LLM inference</p></div><div class="pr"><span>LangSmith</span><p>Tracing and monitoring</p></div><div class="pr"><span>FastAPI</span><p>REST API for the frontend</p></div><div class="pr"><span>Firebase</span><p>Auth and run history storage</p></div><div class="pr"><span>Vercel</span><p>Frontend hosting</p></div></div></div></section>
+</main>
+<div class="modal" id="gm"><div class="card" style="max-width:520px"><div id="gb"></div></div></div>
+<div class="card" id="nf"><div><b>Run completed</b>CLI to-do manager finished in 38s.</div><div><b>Trace logged</b>Run #a91f is available in LangSmith.</div><div><b>Security Auditor</b>1 warning found in your last project.</div></div>
+<div id="toast"></div>
+<div class="modal" id="pal"><div class="card"><input id="pq" placeholder="Type a command…"><div id="pl" style="margin-top:10px"></div></div></div>
+<footer><div class="w"><div class="cols"><div style="text-align:left"><div class="logo"><i></i><span>Dev<b>Crew</b> AI</span></div><p style="margin-top:10px;max-width:280px">A multi-agent AI software team that plans, codes, tests, reviews and documents your ideas.</p></div><div><h4>Product</h4><a data-go="workspace">Workspace</a><a data-go="dashboard">Dashboard</a><a data-go="history">History</a></div><div><h4>Platform</h4><a data-go="traces">Traces</a><a data-go="settings">Settings</a><a data-go="home">Agents</a></div><div><h4>Built with</h4><a>CrewAI</a><a>Groq</a><a>LangSmith</a></div></div>© 2026 DevCrew AI · Made with CrewAI, Groq &amp; LangSmith</div></footer>
+
+<div class="modal" id="m"><div class="card">
+<h3 id="mt" style="font-size:20px">Welcome back</h3><p style="margin-bottom:8px">Sign in to your DevCrew workspace.</p>
+<label>EMAIL</label><input placeholder="you@email.com"><label>PASSWORD</label><input type="password" placeholder="••••••••">
+<button class="btn" id="mc">Sign in</button><button class="btn g">Continue with Google</button><p id="sl" style="text-align:center;margin-top:14px;color:var(--c1);cursor:pointer;font-size:14px">New here? Create an account</p></div></div>
+
+<script src="config.js"></script>
+<script>
+var A=[["🧠","Requirement Analyst","Clarifies the request and extracts clear specs."],["🗺️","Planner","Builds the step-by-step implementation plan."],["⌨️","Coder","Writes clean, documented Python code."],["🧪","Tester","Creates pytest test cases for the code."],["🔍","Reviewer","Finds bugs, smells and design issues."],["🛡️","Security Auditor","Checks for vulnerabilities and unsafe patterns."],["📄","Reporter","Produces final code and the development report."]];
+var F=[["📡","Live agent timeline","Watch every agent work in real time."],["🔗","LangSmith tracing","Open any run’s full trace in one click."],["🗂️","Project history","All past runs saved and searchable."],["🔀","Code diff view","See what the Reviewer changed."],["📦","Export center","Download code, tests and report."],["⚙️","Model settings","Pick Groq model, temperature and tokens."]];
+var O={Plan:"1. Parse CLI args: add, list, done, delete\n2. Persist tasks in tasks.json\n3. Validate IDs and empty titles\n4. Handle missing or corrupt file",Code:"import json, sys\nFILE = 'tasks.json'\n\ndef load():\n    try:\n        with open(FILE) as f:\n            return json.load(f)\n    except FileNotFoundError:\n        return []\n\ndef add(title):\n    tasks = load()\n    tasks.append({'id': len(tasks) + 1,\n                  'title': title, 'done': False})\n    with open(FILE, 'w') as f:\n        json.dump(tasks, f)",Tests:"def test_add_creates_task(tmp_path): ...\ndef test_empty_title_rejected(): ...\ndef test_missing_file_returns_empty(): ...\n\n3 passed in 0.12s",Review:"⚠ IDs can repeat after a delete → use max(id)+1\n⚠ No input length limit on title\n✔ Files closed safely with context managers",Security:"✔ No eval/exec or shell calls\n✔ Path is fixed, no user-controlled file path\n⚠ Sanitize title before printing to terminal",Report:"Project : CLI To-Do Manager\nAgents  : 7     Tests : 3 passed\nIssues  : 3 found, 2 fixed\nStatus  : Ready to export"};
+var KEYS=Object.keys(O),$=function(i){return document.getElementById(i)};
+A.forEach(function(a){var d=document.createElement("div");d.className="card";d.innerHTML='<div class="ic">'+a[0]+"</div><h3>"+a[1]+"</h3><p>"+a[2]+"</p>";$("agents").appendChild(d)});
+F.forEach(function(a){var d=document.createElement("div");d.className="card";d.innerHTML='<div class="ic">'+a[0]+"</div><h3>"+a[1]+"</h3><p>"+a[2]+"</p>";$("feats").appendChild(d)});
+[["CLI to-do manager","7","3","ok","2 min ago"],["Password strength checker","7","5","ok","1 hr ago"],["CSV to JSON converter","7","4","ok","Yesterday"],["Unit converter API","7","2","bad","2 days ago"]].forEach(function(r){var t=document.createElement("tr");t.innerHTML="<td>"+r[0]+"</td><td>"+r[1]+"</td><td>"+r[2]+'</td><td class="'+r[3]+'">'+(r[3]=="ok"?"● Completed":"● Failed")+"</td><td>"+r[4]+"</td>";$("ht").appendChild(t)});
+[["#a91f","Planner","1.2s","812"],["#a91f","Coder","3.8s","2,140"],["#a91f","Tester","2.4s","1,320"],["#a91f","Reviewer","2.1s","960"],["#a91f","Security Auditor","1.6s","740"],["#a91f","Reporter","1.9s","1,105"]].forEach(function(r){var t=document.createElement("tr");t.innerHTML='<td class="mono">'+r[0]+"</td><td>"+r[1]+'</td><td class="mono">'+r[2]+'</td><td class="mono">'+r[3]+'</td><td class="ok">● Success</td>';$("tt").appendChild(t)});
+A.forEach(function(a,i){var n=document.createElement("span");n.className="node";n.textContent=a[1];$("pipe").appendChild(n)});
+function show(k){$("out").textContent=O[k];[].forEach.call($("tabs").children,function(b){b.classList.toggle("on",b.textContent===k)})}
+KEYS.forEach(function(k){var b=document.createElement("button");b.textContent=k;b.onclick=function(){show(k)};$("tabs").appendChild(b)});show("Plan");
+$("tmp").oninput=function(){$("tv").textContent=this.value};
+function simulate(){var ns=$("pipe").children,i=0;$("log").innerHTML="";T0=Date.now();$("sum").classList.remove("on");lg("run started · gpt-oss-120b · trace #a91f");[].forEach.call(ns,function(n){n.className="node"});$("bar").style.width="0";
+(function st(){if(i>0)ns[i-1].className="node ok";$("bar").style.width=Math.round(i/ns.length*100)+"%";
+if(i<ns.length){lg(A[i][1]+" working…");ns[i].className="node act";if(i>=1&&i<=6)show(KEYS[i-1]);i++;setTimeout(st,850)}else{$("bar").style.width="100%";show("Report");lg("✓ all agents done · trace sent to LangSmith");$("sum").classList.add("on");$("tm").textContent=((Date.now()-T0)/1000).toFixed(1)+"s";$("s1").textContent="3";$("s2").textContent="3";$("s3").textContent="1";$("s5").textContent="9";toast("Pipeline complete ✓")}})()}
+var L=["$ devcrew run \"build a to-do CLI\"","→ Analyst   requirements extracted ✔","→ Planner   4-step plan ready ✔","→ Coder     tasks.py generated ✔","→ Tester    3 tests created ✔","→ Reviewer  3 issues found, 2 fixed ✔","→ Security  scan clean ✔","→ Reporter  report.pdf saved ✔","✓ trace logged to LangSmith"],li=0,ci=0,txt="";
+(function ty(){if(li>=L.length){setTimeout(function(){li=0;txt="";ty()},3500);return}
+if(ci<L[li].length){$("ty").textContent=txt+L[li].slice(0,++ci);setTimeout(ty,22)}else{txt+=L[li]+"\n";li++;ci=0;setTimeout(ty,260)}})();
+function go(v){[].forEach.call(document.querySelectorAll(".view"),function(s){s.classList.toggle("on",s.id===v)});[].forEach.call(document.querySelectorAll("nav a"),function(a){a.classList.toggle("on",a.dataset.go===v)});window.scrollTo(0,0)}
+document.addEventListener("click",function(e){var t=e.target.closest("[data-go]");if(t){location.hash=t.dataset.go}});
+function route(){var h=location.hash.slice(1);go(["home","workspace","history","traces","dashboard","settings","architecture"].indexOf(h)>-1?h:"home")}
+window.addEventListener("hashchange",route);route();
+$("login").onclick=function(){try{sessionStorage.removeItem("dc_token");sessionStorage.removeItem("dc_demo")}catch(e){}location.href="index.html"};$("mc").onclick=function(){$("m").classList.remove("on");toast("Welcome to DevCrew AI ✓")};var su=false;$("sl").onclick=function(){su=!su;$("mt").textContent=su?"Create your account":"Welcome back";$("mc").textContent=su?"Sign up":"Sign in";this.textContent=su?"Already have an account? Sign in":"New here? Create an account"};
+$("m").onclick=function(e){if(e.target===this)this.classList.remove("on")};
+function lg(t){var d=document.createElement("div");d.textContent=t;$("log").appendChild(d);$("log").scrollTop=1e9}
+document.addEventListener("mousemove",function(e){var g=$("cg");g.style.left=e.clientX+"px";g.style.top=e.clientY+"px"});
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add("vis");io.unobserve(e.target)}})},{threshold:.12});
+document.querySelectorAll(".grid .card,.stats .card,.step,.faq details,.banner,.mq").forEach(function(el){el.classList.add("rv");io.observe(el)});
+function toast(t){var x=$("toast");x.textContent=t;x.classList.add("on");setTimeout(function(){x.classList.remove("on")},2200)}
+var TP={"To-do CLI":"Build a CLI to-do manager with add, list, complete and delete commands, saving tasks to a JSON file.","REST API":"Create a FastAPI REST API for a notes app with CRUD endpoints and input validation.","CSV cleaner":"Write a script that cleans a CSV file: trim spaces, remove duplicates and fill missing values.","Password checker":"Build a password strength checker with clear rules and a score from 0 to 100."};
+Object.keys(TP).forEach(function(k){var b=document.createElement("button");b.className="chip";b.textContent=k;b.onclick=function(){$("req").value=TP[k];toast("Template loaded")};$("chips").appendChild(b)});
+$("cp").onclick=function(){try{navigator.clipboard.writeText(window.FINAL_CODE||$("out").textContent).then(function(){toast("Copied to clipboard")},function(){toast("Copy not available here")})}catch(e){toast("Copy not available here")}};
+$("hq").oninput=function(){var q=this.value.toLowerCase();[].forEach.call($("ht").rows,function(r,i){if(i)r.style.display=r.textContent.toLowerCase().indexOf(q)>-1?"":"none"})};
+$("sv").onclick=function(){toast("Settings saved ✓")};
+var D=[["Mon",12],["Tue",18],["Wed",9],["Thu",22],["Fri",17],["Sat",25],["Sun",14]],sv='<svg viewBox="0 0 420 200" width="100%"><defs><linearGradient id="gg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#22d3ee"/><stop offset="1" stop-color="#a855f7"/></linearGradient></defs>';
+D.forEach(function(d,i){var h=d[1]*6.4;sv+='<rect x="'+(14+i*58)+'" y="'+(170-h)+'" width="36" height="'+h+'" rx="6" fill="url(#gg)"/><text x="'+(32+i*58)+'" y="192" fill="#7f8ca6" font-size="11" text-anchor="middle" font-family="monospace">'+d[0]+'</text><text x="'+(32+i*58)+'" y="'+(164-h)+'" fill="#e8eefb" font-size="11" text-anchor="middle" font-family="monospace">'+d[1]+"</text>"});
+$("chart").innerHTML=sv+"</svg>";
+[["Planner",99],["Coder",96],["Tester",93],["Reviewer",97],["Security",98],["Reporter",100]].forEach(function(p){var d=document.createElement("div");d.className="pr";d.innerHTML="<span>"+p[0]+'</span><div class="bar"><i style="--v:'+p[1]+'%"></i></div><em>'+p[1]+"%</em>";$("perf").appendChild(d)});
+setTimeout(function(){[].forEach.call(document.querySelectorAll("#perf .bar i"),function(i){i.style.width=getComputedStyle(i).getPropertyValue("--v")})},300);
+var CM=[["Go to Home","home"],["Go to Workspace","workspace"],["Go to Dashboard","dashboard"],["Go to History","history"],["Go to Traces","traces"],["Go to Settings","settings"],["Go to Architecture","architecture"],["Run agents now","run"]];
+function pl(q){var h="";CM.filter(function(c){return c[0].toLowerCase().indexOf(q.toLowerCase())>-1}).forEach(function(c,i){h+='<div class="pi'+(i?"":" f")+'" data-c="'+c[1]+'">'+c[0]+"</div>"});$("pl").innerHTML=h}
+function po(){$("pal").classList.add("on");$("pq").value="";pl("");$("pq").focus()}
+function pc(k){$("pal").classList.remove("on");if(k=="run"){location.hash="workspace";setTimeout(function(){$("run").click()},350)}else if(k){location.hash=k}}
+$("sk").onclick=po;$("pq").oninput=function(){pl(this.value)};
+$("pl").onclick=function(e){var t=e.target.closest(".pi");if(t)pc(t.dataset.c)};
+$("pal").onclick=function(e){if(e.target===this)this.classList.remove("on")};
+document.addEventListener("keydown",function(e){if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()=="k"){e.preventDefault();po()}else if(e.key=="Escape"){$("pal").classList.remove("on");$("m").classList.remove("on")}else if(e.key=="Enter"&&document.activeElement===$("pq")){var f=$("pl").querySelector(".pi");if(f)pc(f.dataset.c)}});
+var T0=0;
+window.addEventListener("scroll",function(){var h=document.documentElement;$("sp").style.width=(h.scrollTop/((h.scrollHeight-h.clientHeight)||1)*100)+"%"});
+function gm(h){$("gb").innerHTML=h;$("gm").classList.add("on")}
+$("gm").onclick=function(e){if(e.target===this||e.target.id=="gx")this.classList.remove("on")};
+document.addEventListener("keydown",function(e){if(e.key=="Escape")$("gm").classList.remove("on")});
+var AD=[["Reads the request and lists requirements, edge cases and assumptions.","Requirement checklist, clarifier","Input validation, file errors and empty titles need handling."],["Turns the spec into an ordered implementation plan.","Task decomposer","Step 1: parse args. Step 2: persist JSON. Step 3: validate IDs."],["Writes clean, documented Python that follows the plan.","Code generator, linter","def add(title): ... with open(FILE, 'w') as f: ..."],["Creates pytest test cases covering normal and edge cases.","pytest, fixtures","def test_empty_title_rejected(): ..."],["Reviews the code and finds bugs, smells and design issues.","Static analysis, review checklist","IDs can repeat after delete. Use max(id) + 1."],["Scans for vulnerabilities and unsafe patterns.","Pattern scanner, OWASP checklist","No eval or shell calls found. Sanitize terminal output."],["Merges everything into the final code and development report.","Report builder, exporter","Project summary, tests, issues fixed, final code."]];
+[].forEach.call($("agents").children,function(c,i){c.style.cursor="pointer";c.onclick=function(){var d=AD[i];gm('<div class="ic">'+A[i][0]+'</div><h3>'+A[i][1]+'</h3><p>'+d[0]+'</p><label>TOOLS</label><p style="color:var(--fg)">'+d[1]+'</p><label>MODEL</label><p style="color:var(--fg)">openai/gpt-oss-120b via Groq</p><label>SAMPLE OUTPUT</label><pre>'+d[2]+'</pre><button class="btn" id="gx">Close</button>')}});
+[].forEach.call($("tt").rows,function(r,i){if(!i)return;r.className="tr";r.onclick=function(){var c=r.cells;gm('<h3>Trace '+c[0].textContent+'</h3><p>'+c[1].textContent+' · '+c[2].textContent+' · '+c[3].textContent+' tokens · Success</p><label>INPUT</label><pre>'+(i<2?'Requirement: CLI to-do manager':'Output of previous agent')+'</pre><label>OUTPUT</label><pre>'+c[1].textContent+' result saved to run state</pre><label>METADATA</label><pre>project: devcrew-ai\nmodel: openai/gpt-oss-120b\nframework: crewai</pre><button class="btn" id="gx">Close</button>')}});
+O.Diff="  def add(title):\n      tasks = load()\n-     tasks.append({'id': len(tasks) + 1,\n+     new_id = max([t['id'] for t in tasks], default=0) + 1\n+     tasks.append({'id': new_id,\n                    'title': title[:100], 'done': False})";
+(function(){var b=document.createElement("button");b.textContent="Diff";b.onclick=function(){show("Diff")};$("tabs").appendChild(b)})();
+[["#22d3ee","#a855f7"],["#34d399","#22d3ee"],["#f472b6","#a855f7"],["#fbbf24","#fb7185"]].forEach(function(p,i){var b=document.createElement("button");b.style.background="linear-gradient(135deg,"+p[0]+","+p[1]+")";if(!i)b.className="on";b.onclick=function(){document.documentElement.style.setProperty("--c1",p[0]);document.documentElement.style.setProperty("--c2",p[1]);[].forEach.call($("sw").children,function(x){x.classList.toggle("on",x===b)});toast("Accent updated")};$("sw").appendChild(b)});
+function show(k){$("out").style.whiteSpace="";var t=O[k].replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");$("out").innerHTML=t.split("\n").map(function(l){var c="";if(k=="Diff"){c=l.charAt(0)=="+"?"dp":l.charAt(0)=="-"?"dm":""}else if(k=="Code"||k=="Tests"){l=l.replace(/\b(def|import|return|with|as|try|except|if|else|for|in)\b/g,'<b class="kw">$1</b>').replace(/('[^']*')/g,'<b class="st">$1</b>')}return '<span class="ln '+c+'">'+l+"</span>"}).join("");[].forEach.call($("tabs").children,function(b){b.classList.toggle("on",b.textContent===k)})}
+show("Code");show("Plan");
+$("bl").onclick=function(e){e.stopPropagation();$("nf").classList.toggle("on")};
+document.addEventListener("click",function(e){if(!e.target.closest("#nf"))$("nf").classList.remove("on")});
+$("mc").addEventListener("click",function(){$("login").textContent="👤 My account"});
+document.addEventListener("keydown",function(e){var a=document.activeElement.tagName;if(e.key=="?"&&a!="INPUT"&&a!="TEXTAREA"){gm('<h3>Keyboard shortcuts</h3><p>Move faster with these keys.</p><pre>Ctrl / ⌘ + K   Command palette\nEsc           Close popups\n?             Show this help</pre><button class="btn" id="gx">Close</button>')}});
+
+/* ===== Real backend connection (falls back to the demo animation when the API is unreachable) ===== */
+var CFGX=window.DEVCREW_CONFIG||{},API=(CFGX.API_BASE||"http://localhost:8000").replace(/\/$/,""),running=false;
+function tkn(){try{return sessionStorage.getItem("dc_token")||""}catch(e){return ""}}
+function hdr(){var h={"Content-Type":"application/json"},t=tkn();if(t)h.Authorization="Bearer "+t;return h}
+function fence(t){var m=(t||"").match(/```(?:python|py)?\n([\s\S]*?)```/);return m?m[1].trim():(t||"")}
+function cnt(t,re){return ((t||"").match(re)||[]).length}
+function lineDiff(a,b){var x=a.split("\n"),y=b.split("\n"),n=x.length,m=y.length,L=[],i,j,o=[];for(i=0;i<=n;i++)L.push(new Array(m+1).fill(0));
+for(i=n-1;i>=0;i--)for(j=m-1;j>=0;j--)L[i][j]=x[i]===y[j]?L[i+1][j+1]+1:Math.max(L[i+1][j],L[i][j+1]);
+i=0;j=0;while(i<n&&j<m){if(x[i]===y[j]){o.push("  "+x[i]);i++;j++}else if(L[i+1][j]>=L[i][j+1]){o.push("- "+x[i]);i++}else{o.push("+ "+y[j]);j++}}
+while(i<n)o.push("- "+x[i++]);while(j<m)o.push("+ "+y[j++]);return o.join("\n")}
+function cell(tr,t,c){var td=document.createElement("td");td.textContent=t;if(c)td.className=c;tr.appendChild(td)}
+function addRun(d,first){var e=$("emp");if(e)e.remove();var tb=$("ht").tBodies[0],tr=document.createElement("tr"),st=d.stages||[];
+cell(tr,d.requirement);cell(tr,String(st.length||7));cell(tr,String(cnt(st[3]&&st[3].output,/def test_/g)));cell(tr,"● Completed","ok");cell(tr,d.created_at?new Date(d.created_at).toLocaleString():"just now");
+tb.insertBefore(tr,first?(tb.rows[1]||null):null)}
+function addTr(d){var tb=$("tt").tBodies[0];(d.stages||[]).forEach(function(s){var tr=document.createElement("tr");cell(tr,"#"+d.run_id,"mono");cell(tr,s.agent);cell(tr,s.seconds+"s","mono");cell(tr,"—","mono");cell(tr,"● Success","ok");tb.appendChild(tr)})}
+function saveRun(d){try{var L=JSON.parse(localStorage.getItem("dc_runs")||"[]");L.unshift({run_id:d.run_id,created_at:d.created_at,requirement:d.requirement,stages:(d.stages||[]).map(function(s,i){return{agent:s.agent,seconds:s.seconds,output:i==3?s.output:""}})});localStorage.setItem("dc_runs",JSON.stringify(L.slice(0,20)))}catch(e){}}
+function loadRuns(){try{var L=JSON.parse(localStorage.getItem("dc_runs")||"[]");
+[].slice.call($("ht").rows,1).forEach(function(x){x.remove()});[].slice.call($("tt").rows,1).forEach(function(x){x.remove()});
+if(!L.length){var tr=document.createElement("tr"),td=document.createElement("td");tr.id="emp";td.colSpan=5;td.textContent="No runs yet. Run the agents in the Workspace.";tr.appendChild(td);$("ht").tBodies[0].appendChild(tr);return}
+L.slice().reverse().forEach(function(d){addRun(d,true)});L.forEach(addTr)}catch(e){}}
+function render(d){var st=d.stages||[],g=function(i){return st[i]?st[i].output:""};
+O.Plan="# Requirements\n"+g(0)+"\n\n# Plan\n"+g(1);O.Code=fence(g(2));O.Tests=fence(g(3));O.Review=g(4);O.Security=g(5);O.Report=d.report||g(6);
+window.FINAL_CODE=d.final_code||"";O.Diff=window.FINAL_CODE?lineDiff(fence(g(2)),window.FINAL_CODE):"No final code returned.";
+st.forEach(function(s){lg(s.agent+" finished in "+s.seconds+"s")});
+var tot=st.reduce(function(a,s){return a+s.seconds},0),bp=/^\s*(\d+[.)]\s|[-*•]\s|\|\s*\d+\s*\|)/gm;
+$("s1").textContent=cnt(g(3),/def test_/g);$("s2").textContent=cnt(g(4),bp);$("s3").textContent=cnt(g(5),bp);$("tm").textContent=tot.toFixed(1)+"s";$("s5").textContent=window.FINAL_CODE?window.FINAL_CODE.split("\n").length:0;
+[].forEach.call($("pipe").children,function(n){n.className="node ok"});$("bar").style.width="100%";show("Report");$("sum").classList.add("on");
+if(!window.FINAL_CODE)lg("⚠ no complete code block found in the report");addRun(d,true);addTr(d);saveRun(d);lg("✓ run "+d.run_id+" complete · traced in LangSmith (if enabled)");toast("Pipeline complete ✓")}
+async function realRun(){
+if(running)return;var req=$("req").value.trim();if(req.length<10){toast("Requirement must be at least 10 characters");return}
+running=true;$("run").disabled=true;$("run").textContent="Running…";
+var ns=$("pipe").children,k=0;$("log").innerHTML="";$("sum").classList.remove("on");[].forEach.call(ns,function(n){n.className="node"});$("bar").style.width="5%";
+lg("run started · POST "+API+"/api/run");lg("the crew is working, this can take a while…");ns[0].className="node act";
+var tm=setInterval(function(){if(k<ns.length-1){ns[k].className="node ok";k++;ns[k].className="node act";$("bar").style.width=Math.round(k/ns.length*90)+"%"}},5000);
+var ctl=new AbortController(),to=setTimeout(function(){ctl.abort()},300000);
+try{
+var r=await fetch(API+"/api/run",{method:"POST",headers:hdr(),body:JSON.stringify({requirement:req,model:$("mdl").value,temperature:parseFloat($("tmp").value)}),signal:ctl.signal});
+var d=await r.json().catch(function(){return{}});
+if(r.status==401){try{sessionStorage.removeItem("dc_token");sessionStorage.removeItem("dc_demo")}catch(e){}toast("Session expired. Please sign in again.");setTimeout(function(){location.href="index.html"},1500);throw{handled:1}}
+if(!r.ok)throw{msg:(typeof d.detail=="string"?d.detail:"Request failed ("+r.status+")")};
+clearInterval(tm);render(d)
+}catch(e){clearInterval(tm);
+if(e&&e.handled){}
+else if(e&&e.msg){[].forEach.call(ns,function(n){n.className="node"});$("bar").style.width="0";lg("✗ "+e.msg);$("out").style.whiteSpace="pre-wrap";$("out").textContent="✗ "+e.msg+"\n\nSee the backend terminal for details.";toast("Run failed")}
+else{simulate();lg("backend not reachable at "+API+", showing demo output instead");toast("Backend unreachable. Showing demo output.")}}
+finally{clearTimeout(to);running=false;$("run").disabled=false;$("run").textContent="Run agents ▶"}}
+$("run").onclick=realRun;loadRuns();
+</script>
+</body>
+</html>
